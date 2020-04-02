@@ -1,3 +1,3 @@
 hackz
 
-# H2 random scripts for random purposes :)
+# H1 random scripts for random purposes :)
