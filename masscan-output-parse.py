@@ -2,9 +2,9 @@ import os
 import re
     
 #remove masscan text from output
-os.system("tail -n +3 testjson | head -n -1 > testjson2")
+os.system("tail -n +3 masscan_greppable_output.txt | head -n -1 > work_file.txt")
 
-with open("testjson2") as f:
+with open("work_file.txt") as f:
     #for line of masscan output
     for line in f:
         #strip line of not needed text
@@ -13,7 +13,7 @@ with open("testjson2") as f:
         ip = line2[0:15].strip()
         port = line2[16:20].strip()
 
-        with open('all_servers_scanned.txt', 'r+') as read_obj:
+        with open('final_output.txt', 'r+') as read_obj:
             # Read all lines in the file one by one
             ipandport_home = str(ip + ' ' + port)
             not_in = True
@@ -24,10 +24,10 @@ with open("testjson2") as f:
                 print(line_number)
                 if ip in line:
                     if port not in line:
-                        the_line = open('all_servers_scanned.txt').readlines()
+                        the_line = open('final_output.txt').readlines()
                         print('         line with pair -> ' + the_line[line_number - 1])
                         the_line[line_number - 1] = line.strip() + ',' + port + '\n'
-                        open('all_servers_scanned.txt','w+').write(''.join(the_line))
+                        open('final_output.txt','w+').write(''.join(the_line))
                     
                     not_in = False
 
