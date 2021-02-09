@@ -1,3 +1,3 @@
-hackz
+# Convert masscan's -S (Simple Output) to ip:port format
 
-# random scripts for random purposes :)
+useful for piping masscan output to other tools.
